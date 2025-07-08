@@ -1,0 +1,4 @@
+customtkinter
+sounddevice
+soundfile
+simpleaudio
