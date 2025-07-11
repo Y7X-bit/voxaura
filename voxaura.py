@@ -8,16 +8,15 @@ import simpleaudio as sa
 ctk.set_appearance_mode("dark")
 ctk.set_default_color_theme("dark-blue")
 
-# Ensure recordings folder exists
 os.makedirs("recordings", exist_ok=True)
 
-class PremiumVoiceRecorder(ctk.CTk):
+class VoxauraApp(ctk.CTk):
     def __init__(self):
         super().__init__()
-        self.title("🎙️ Voice Recorder Pro — Y7X")
-        self.geometry("640x480")
+        self.title("🎙️ Voxaura by Y7X")
+        self.geometry("700x500")
         self.resizable(False, False)
-        self.configure(fg_color="#111418")  # Rich dark graphite background
+        self.configure(fg_color="#0a0a0a")
 
         self.devices = [d['name'] for d in sd.query_devices() if d['max_input_channels'] > 0]
         self.selected_device = ctk.StringVar(value=self.devices[0])
@@ -26,53 +25,49 @@ class PremiumVoiceRecorder(ctk.CTk):
         self.create_widgets()
 
     def create_widgets(self):
-        # Header
-        ctk.CTkLabel(self, text="🎧 Voice Recorder Pro", font=("Segoe UI Semibold", 26), text_color="#f0f0f0").pack(pady=12)
+        ctk.CTkLabel(self, text="🎧 Voxaura", font=("Poppins", 28, "bold"), text_color="#ff1a1a").pack(pady=12)
 
-        # Input device selector
         self.device_menu = ctk.CTkOptionMenu(self, values=self.devices, variable=self.selected_device,
-                                             width=500, height=40, fg_color="#1e2227",
-                                             button_color="#1e2227", button_hover_color="#2e3237",
-                                             dropdown_fg_color="#1e2227", dropdown_hover_color="#2e3237",
-                                             text_color="#ffffff")
-        self.device_menu.pack(pady=6)
+                                             width=520, height=42, fg_color="#161616", text_color="#ffffff",
+                                             button_color="#0f0f0f", button_hover_color="#1a1a1a",
+                                             dropdown_fg_color="#161616", dropdown_hover_color="#2a2a2a")
+        self.device_menu.pack(pady=8)
 
-        # Recording duration input
-        self.duration_entry = ctk.CTkEntry(self, placeholder_text="⏱ Duration (in seconds)", width=500,
-                                           height=40, border_color="#3a3f47", border_width=2)
-        self.duration_entry.pack(pady=6)
+        # Grouped row for Duration and Save As
+        entry_frame = ctk.CTkFrame(self, fg_color="transparent")
+        entry_frame.pack(pady=8)
 
-        # Filename input
-        self.filename_entry = ctk.CTkEntry(self, placeholder_text="💾 Save As (e.g. my_voice)", width=500,
-                                           height=40, border_color="#3a3f47", border_width=2)
-        self.filename_entry.pack(pady=6)
+        self.duration_entry = ctk.CTkEntry(entry_frame, placeholder_text="⏱ Duration (in seconds)", width=250,
+                                           height=40, border_color="#ff1a1a", border_width=2, text_color="#ffffff",
+                                           corner_radius=20)
+        self.duration_entry.pack(side="left", padx=5)
 
-        # Record button
+        self.filename_entry = ctk.CTkEntry(entry_frame, placeholder_text="💾 Save As (e.g. my_voice)", width=250,
+                                           height=40, border_color="#ff1a1a", border_width=2, text_color="#ffffff",
+                                           corner_radius=20)
+        self.filename_entry.pack(side="left", padx=5)
+
         self.record_button = ctk.CTkButton(self, text="⏺ Start Recording", command=self.start_recording_thread,
-                                           width=500, height=48, fg_color="#005b96", hover_color="#0074d9",
-                                           border_color="#339af0", border_width=2, corner_radius=20,
+                                           width=520, height=50, fg_color="#ff1a1a", hover_color="#ff3333",
+                                           border_color="#ff4d4d", border_width=2, corner_radius=25,
                                            font=("Segoe UI Semibold", 16))
-        self.record_button.pack(pady=14)
+        self.record_button.pack(pady=12)
 
-        # Status label
         self.status_label = ctk.CTkLabel(self, text="", font=("Segoe UI", 14), text_color="#bbbbbb")
-        self.status_label.pack(pady=5)
+        self.status_label.pack(pady=4)
 
-        # Play button
         self.play_button = ctk.CTkButton(self, text="▶️ Play Last Recording", command=self.play_last_recording,
-                                         width=500, height=42, fg_color="#006442", hover_color="#08944a",
-                                         border_color="#37c978", border_width=2, corner_radius=18)
+                                         width=520, height=44, fg_color="#222", hover_color="#333",
+                                         border_color="#ff1a1a", border_width=2, corner_radius=20)
         self.play_button.pack(pady=6)
 
-        # Open folder button
         self.explore_button = ctk.CTkButton(self, text="📂 Open Recordings Folder", command=self.open_recordings_folder,
-                                            width=500, height=42, fg_color="#353535", hover_color="#4c4c4c",
-                                            border_color="#888", border_width=2, corner_radius=18)
+                                            width=520, height=44, fg_color="#111", hover_color="#222",
+                                            border_color="#777", border_width=2, corner_radius=20)
         self.explore_button.pack(pady=6)
 
-        # Footer
-        ctk.CTkLabel(self, text="🔎 Made with 💗 by Y7X", font=("Segoe UI", 12, "italic"),
-                     text_color="#666").pack(side="bottom", pady=12)
+        ctk.CTkLabel(self, text="🔎 Powered by Y7X 💗", font=("Segoe UI", 12, "italic"),
+                     text_color="#ff1a1a").pack(side="bottom", pady=12)
 
     def start_recording_thread(self):
         threading.Thread(target=self.record_audio).start()
@@ -117,8 +112,7 @@ class PremiumVoiceRecorder(ctk.CTk):
 
     def open_recordings_folder(self):
         folder_path = os.path.abspath("recordings")
-        os.system(f"open \"{folder_path}\"")  # macOS open
+        os.system(f"open \"{folder_path}\"")
 
-# Run app
-app = PremiumVoiceRecorder()
+app = VoxauraApp()
 app.mainloop()
