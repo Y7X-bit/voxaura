@@ -1,23 +1,31 @@
-# 🎙️ Voxaura — Premium Voice Recorder by Y7X
+<h1 align="center">🎙️ Voxaura</h1>
+<p align="center">
+  <b>Voice recording made smooth, clean, and yours.</b><br>
+  <i>🔎 Powered by Y7X 💗</i>
+</p>
 
-**Voxaura** is a beautifully designed, dark-themed voice recorder built using Python & CustomTkinter —  
-for those who love clean UIs, powerful performance, and effortless voice capture.
-
----
-
-## ✨ Features
-- 🎛️ Select any input microphone
-- ⏱️ Set custom recording duration
-- 💾 Name and save recordings easily
-- ▶️ One-click playback
-- 📂 Instantly open saved files folder
-- 🌙 AMOLED-inspired UI with glowing accents
-- 🔎 Powered by **Y7X 💗**
+<p align="center">
+  <img src="assets/1.png" alt="Voxaura UI Preview" width="600"/>
+</p>
 
 ---
 
-## 🚀 Run It Locally
+### 🎧 Features
+
+- ⏺️ Record audio from any input device
+- 💾 Save with custom file names
+- 🧠 Organized layout with grouped pill-shaped fields
+- 🎵 Play your last recording instantly
+- 📂 Quick access to the recordings folder
+- 🎛️ Device selector for multi-mic setups
+- 🔴 AMOLED-style dark UI with red glow highlights
+
+---
+
+### 🚀 Getting Started
 
 ```bash
+git clone https://github.com/Y7X-bit/voxaura.git
+cd voxaura
 pip install -r requirements.txt
-python3 voxaura.py
+python voxaura.py
