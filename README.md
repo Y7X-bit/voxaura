@@ -1,16 +1,19 @@
-<h1 align="center">🎙️ Voxaura</h1>
-<p align="center">
-  <b>Voice recording made smooth, clean, and yours.</b><br>
-  <i>🔎 Powered by Y7X 💗</i>
-</p>
+<div align="center">
 
-<p align="center">
-  <img src="assets/1.png" alt="Voxaura UI Preview" width="600"/>
-</p>
+# 🎙️ Voxaura 
+
+**🎙️ Voxaura — because silence isn’t always golden.**
+
+Voice recording made smooth, clean, and yours.
+Branded with 💗 by [Y7X-bit](https://github.com/Y7X-bit)
+
+<img src="assets/1.png" alt="Voxaura UI Preview" width="600"/>
+
+</div>
 
 ---
 
-### 🎧 Features
+## 🌟 Features at a Glance
 
 - ⏺️ Record audio from any input device
 - 💾 Save with custom file names
@@ -22,10 +25,12 @@
 
 ---
 
-### 🚀 Getting Started
+## 🖥️ Installation
+
+> Python 3.9 or later required
 
 ```bash
-git clone https://github.com/Y7X-bit/voxaura.git
-cd voxaura
+git clone https://github.com/Y7X-bit/VoxAura.git
+cd VoxAura
 pip install -r requirements.txt
-python voxaura.py
+python VoxAura.py
